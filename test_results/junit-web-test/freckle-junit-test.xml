@@ -1,0 +1,15 @@
+<testsuites name="fancy-api">
+  <testsuite name="Freckle.Api.Handlers.Ela.AdaptiveSkill.Passage//ela/adaptive-skills/assignments/:id/passages GET" package="Freckle.Api.Handlers.Ela.AdaptiveSkill.Passage//ela/adaptive-skills/assignments/:id/passages GET" id="0" time="1.020266000" timestamp="2024-01-08T22:27:40.014365Z" hostname="localhost" tests="3" failures="1" errors="0" skipped="0">
+    <properties/>
+    <testcase file="fancy-api/tests/Freckle/Api/Handlers/Ela/AdaptiveSkill/PassageSpec.hs" line="195" name="sorts passages by created at" classname="Freckle.Api.Handlers.Ela.AdaptiveSkill.Passage//ela/adaptive-skills/assignments/:id/passages GET" time="0.338346000"/>
+    <testcase file="fancy-api/tests/Freckle/Api/Handlers/Ela/AdaptiveSkill/PassageSpec.hs" line="193" name="does not return passages that are not related to the student's current skill" classname="Freckle.Api.Handlers.Ela.AdaptiveSkill.Passage//ela/adaptive-skills/assignments/:id/passages GET" time="0.335951000">
+      <failure type="error">fancy-api/tests/Freckle/Api/Handlers/Ela/AdaptiveSkill/PassageSpec.hs:193:11
+Graphula with seed: 3059625118439811851
+
+Graph dumped in temp file: /tmp/nix-shell.PMT5JB/graphula/fail-65038-0.graphula
+
+Expected status was 400 but received status was 200. For debugging, the body was: {"id":1,"assignmentId":1,"subject":"ela","teacherId":3,"studentId":3,"status":"completed","createdAt":"1858-11-15T00:00:00Z","title":"","completedAt":"1858-11-17T00:00:03Z","accuracy":1.4229479,"numQuestionsAnswered":50,"isSelfAssigned":"teacher_assigned","metadata":{"tag":"ela_adaptive_skills_practice","contents":{"domain":{"id":"0a50db28a6d2d54e24d02ebe59149721","name":"\u0013s';\u0003","lowestGrade":5,"highestGrade":10,"k5ThumbnailImage":"|","k5PathwayImage":"\tk","msThumbnailImage":"\u0019􁫹","msPathwayImage":"","hasElaPathwayContent":true,"hasElaGrammarQuestions":true,"hasElaWordStudyQuestions":true,"hasElaArticleWritingQuestions":true,"hasElaArticleReadingQuestions":false,"isStudentVisible":true},"rlStandard":{"id":"b6dde810a09f51ff1a50f18f1ff34b2c","name":"","shortName":"\u001e0kZ","description":"J󿾯\u000e=]ࡂ#","progressionOrder":0,"grade":5,"domainId":"0a50db28a6d2d54e24d02ebe59149721","hasElaPathwayContent":false,"hasElaGrammarQuestions":false,"hasElaWordStudyQuestions":true,"hasElaArticleWritingQuesti... (use `printBody` to see complete response body)</failure>
+    </testcase>
+    <testcase file="fancy-api/tests/Freckle/Api/Handlers/Ela/AdaptiveSkill/PassageSpec.hs" line="92" name="returns passages related to the student's current skill" classname="Freckle.Api.Handlers.Ela.AdaptiveSkill.Passage//ela/adaptive-skills/assignments/:id/passages GET" time="0.345969000"/>
+  </testsuite>
+</testsuites>

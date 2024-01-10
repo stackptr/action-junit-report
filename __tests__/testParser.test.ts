@@ -969,6 +969,27 @@ action.surefire.report.email.InvalidEmailAddressException: Invalid email address
     ])
   })
 
+  it('should use the full output for the annotation message', async () => {
+    const {totalCount, skipped, annotations} = await parseFile('test_results/junit-web-test/freckle-junit-test.xml')
+    const filtered = annotations.filter(annotation => annotation.annotation_level !== 'notice')
+
+    expect(filtered).toStrictEqual([
+      {
+        path: 'fancy-api/tests/Freckle/Api/Handlers/Ela/AdaptiveSkill/PassageSpec.hs',
+        start_line: 193,
+        end_line: 193,
+        start_column: 0,
+        end_column: 0,
+        annotation_level: 'failure',
+        status: 'failure',
+        title: `fancy-api/tests/Freckle/Api/Handlers/Ela/AdaptiveSkill/PassageSpec.hs.does not return passages that are not related to the student's current skill`,
+        message: `fancy-api/tests/Freckle/Api/Handlers/Ela/AdaptiveSkill/PassageSpec.hs:193:11\nGraphula with seed: 3059625118439811851`,
+        raw_details:
+          `fancy-api/tests/Freckle/Api/Handlers/Ela/AdaptiveSkill/PassageSpec.hs:193:11\nGraphula with seed: 3059625118439811851\n\nGraph dumped in temp file: /tmp/nix-shell.PMT5JB/graphula/fail-65038-0.graphula\n\nExpected status was 400 but received status was 200. For debugging, the body was: {\"id\":1,\"assignmentId\":1,\"subject\":\"ela\",\"teacherId\":3,\"studentId\":3,\"status\":\"completed\",\"createdAt\":\"1858-11-15T00:00:00Z\",\"title\":\"\",\"completedAt\":\"1858-11-17T00:00:03Z\",\"accuracy\":1.4229479,\"numQuestionsAnswered\":50,\"isSelfAssigned\":\"teacher_assigned\",\"metadata\":{\"tag\":\"ela_adaptive_skills_practice\",\"contents\":{\"domain\":{\"id\":\"0a50db28a6d2d54e24d02ebe59149721\",\"name\":\"\\u0013s';\\u0003\",\"lowestGrade\":5,\"highestGrade\":10,\"k5ThumbnailImage\":\"|\",\"k5PathwayImage\":\"\\tk\",\"msThumbnailImage\":\"\\u0019􁫹\",\"msPathwayImage\":\"\",\"hasElaPathwayContent\":true,\"hasElaGrammarQuestions\":true,\"hasElaWordStudyQuestions\":true,\"hasElaArticleWritingQuestions\":true,\"hasElaArticleReadingQuestions\":false,\"isStudentVisible\":true},\"rlStandard\":{\"id\":\"b6dde810a09f51ff1a50f18f1ff34b2c\",\"name\":\"\",\"shortName\":\"\\u001e0kZ\",\"description\":\"J󿾯\\u000e=]ࡂ#\",\"progressionOrder\":0,\"grade\":5,\"domainId\":\"0a50db28a6d2d54e24d02ebe59149721\",\"hasElaPathwayContent\":false,\"hasElaGrammarQuestions\":false,\"hasElaWordStudyQuestions\":true,\"hasElaArticleWritingQuesti... (use \`printBody\` to see complete response body)`
+      }
+    ])
+  })
+
   it('should parse and transform perl results', async () => {
     const transformer: Transformer[] = [
       {
